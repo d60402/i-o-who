@@ -1,7 +1,7 @@
 # I-O-Who
 
-This project demonstrates the use of an [Auth0 Webtask](https://webtask.io) to integrate Google Home, IFTT, and MongoDB
-for keeping track of [IOUs](https://en.wikipedia.org/wiki/IOU). Just say, "Hey Google. Create an IOU for Daryl for ten dollars", and a document is created in your MongoDB to record the person's name and the amount you owe them.
+This project demonstrates the use of an [Auth0 Webtask](https://webtask.io) to integrate [Google Home](https://madeby.google.com/home/), [IFTT](https://ifttt.com), and [MongoDB](https://www.mongodb.com/)
+for keeping track of [IOUs](https://en.wikipedia.org/wiki/IOU). Just say, "Hey Google. Create an IOU for Daryl for ten dollars", and a document is created in the database to record the person's name and the amount you owe them.
 
 ## Setting Everything Up
 
@@ -9,7 +9,7 @@ These instructions use the Webtask command line interface (CLI). Alternatively, 
 
 ### Create Your Datbase And Database User
 
-In order to create the Webtask, you'll need to provide a MongoDB URI which includes the login name and password for a MongoDB user that can write to the database. 
+In order to create the webtask, you'll need to provide a MongoDB URI which includes the login name and password for a MongoDB user that can write to the database. 
 >Since the procedures for creating the database and user credentials vary slightly from hosting providers, the details for doing so are not included here. Once you have completed these steps, you should have a MongoDB URI such as `mongodb://<dbuser>:<dbpassword>@ds123456.mlab.com:23456/<dbname>`.
 
 ### Setup Your Webtask Development Environment
@@ -28,7 +28,7 @@ In order to create the Webtask, you'll need to provide a MongoDB URI which inclu
 1. Clone or download this github repository. Alternatively, you can simply create the `i-o-who.js` file manually since it's the only source code you need. 
     >This example code uses ES6 arrow functions, but you can of course use the ES5 "function" keyword instead if you prefer.
 
-2. Create the Webtask on the webtask.io server by executing the following command. **Make sure you substitue your MongoDB URI obtained previously**...
+2. Create the webtask on the webtask.io server by executing the following command. **Make sure you substitue your MongoDB URI obtained previously**...
     ```shell
     wt create --secret MONGO_URI=mongodb://<dbuser>:<dbpassword>@ds123456.mlab.com:23456/<dbname> i-o-who.js
     ```
@@ -51,11 +51,11 @@ In order to create the Webtask, you'll need to provide a MongoDB URI which inclu
 13. Click the **Finish** button.
 
 ### Try It Out!
-Go to your Google Home, and say, "Hey Google, create an IOU for Daryl for ten dollars." If all goes according to plan, the Assistant will respond that it has created the IOU, and you see the corresponding documenent in your database!
+Go to your Google Home, and say, "Hey Google, create an IOU for Daryl for ten dollars." If all goes according to plan, the Assistant will respond that it has created the IOU, and you will see the corresponding documenent in your database!
 
 ### Troubleshooting
 
-If things don't work out correctly, try adding `console.log()` statements to your Webtask script, recreate the Webtask on the server, then run `wt logs` on your local machine to watch log output.
+If things don't work out correctly, try adding `console.log()` statements to your webtask script, recreate the webtask on the server, then run `wt logs` on your local machine to watch log output.
 
 One other thing I have found is that Google Home Assistant doesn't like certain phrases. For instance, I initially set the trigger phrase to, "I owe $ # dollars". However, Google Home responded that it didn't know how to help with that. I also tried, "Make a note that I owe $ # dollars", to which it responded, "Sorry, I can't take notes yet."
 
